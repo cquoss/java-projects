@@ -28,12 +28,12 @@ class HttpClientExample {
 	/**
 	 * classname
 	 */
-	private static final String CLASSNAME = HttpClientExample.class.getName();
+	private static final String CLASS_NAME = HttpClientExample.class.getName();
 
 	/**
 	 * logger
 	 */
-	private static final Logger LOGGER = Logger.getLogger(CLASSNAME);
+	private static final Logger LOGGER = Logger.getLogger(CLASS_NAME);
 
 	/**
 	 * private working constructor
