@@ -17,9 +17,9 @@ import com.sun.net.httpserver.HttpServer;
 
 class HttpServer2Example {
 
-	private static final String CLASSNAME = HttpServer2Example.class.getName();
+	private static final String CLASS_NAME = HttpServer2Example.class.getName();
 
-	private static final Logger LOGGER = Logger.getLogger(CLASSNAME);
+	private static final Logger LOGGER = Logger.getLogger(CLASS_NAME);
 
 	private static final String REQUEST_METHOD_GET = "GET";
 
