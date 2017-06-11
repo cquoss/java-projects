@@ -25,14 +25,14 @@ import com.sun.net.httpserver.HttpServer;
 class HttpServerExample {
 
 	/**
-	 * classname
+	 * class name
 	 */
-	private static final String CLASSNAME = HttpServerExample.class.getName();
+	private static final String CLASS_NAME = HttpServerExample.class.getName();
 
 	/**
 	 * logger
 	 */
-	private static final Logger LOGGER = Logger.getLogger(CLASSNAME);
+	private static final Logger LOGGER = Logger.getLogger(CLASS_NAME);
 
 	/**
 	 * private working constructor
