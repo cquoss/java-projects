@@ -10,9 +10,9 @@ import java.util.logging.Logger;
 
 public class HttpClient2Example {
 
-	private static final String CLASSNAME = HttpClient2Example.class.getName();
+	private static final String CLASS_NAME = HttpClient2Example.class.getName();
 
-	private static final Logger LOGGER = Logger.getLogger(CLASSNAME);
+	private static final Logger LOGGER = Logger.getLogger(CLASS_NAME);
 
 	private static final String FILENAME = "test.txt";
 
