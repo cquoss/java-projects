@@ -1,8 +1,10 @@
 package de.quoss.example.httpexample;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,6 +37,11 @@ class HttpServerExample {
 	private static final Logger LOGGER = Logger.getLogger(CLASS_NAME);
 
 	/**
+	 * properties
+	 */
+	private Properties properties = new Properties();
+
+	/**
 	 * private working constructor
 	 * 
 	 * @throws HttpExampleException
@@ -45,16 +52,29 @@ class HttpServerExample {
 		// start message
 		LOGGER.log(Level.INFO, "start");
 
+		// try to load properties
+		try {
+			String propertiesFileName = CLASS_NAME.concat(".properties");
+			FileInputStream fileInputStream = new FileInputStream(propertiesFileName);
+			properties.load(fileInputStream);
+		} catch (IOException e) {
+			throw new HttpExampleException(e);
+		}
+
 		// try to create http server
 		HttpServer httpServer = null;
+		int port = Integer.parseInt(getProperty("port", "8080"));
+		LOGGER.log(Level.INFO, "Starting http server on port: {0}", new Object[] { port });
 		try {
-			httpServer = HttpServer.create(new InetSocketAddress(8080), 0);
+			httpServer = HttpServer.create(new InetSocketAddress(port), 0);
 		} catch (IOException e) {
 			throw new HttpExampleException(e);
 		}
 
 		// set root context with example http handler
-		httpServer.createContext("/", new HttpHandlerExample());
+		String context = getProperty("context", "/");
+		LOGGER.log(Level.INFO, "Using context: {0}", new Object[] { context });
+		httpServer.createContext(context, new HttpHandlerExample());
 
 		// start server
 		httpServer.start();
@@ -64,6 +84,39 @@ class HttpServerExample {
 
 	}
 
+	/**
+	 * get property with default value
+	 * 
+	 * @param key
+	 *            key to property
+	 * @param defaultValue
+	 *            default value
+	 * @return value or if null, default value
+	 */
+	private String getProperty(String key, String defaultValue) {
+
+		// build full key
+		String fullKey = CLASS_NAME.concat(".").concat(key);
+
+		// get value from properties
+		String value = properties.getProperty(fullKey);
+
+		// check whether to return value or default value
+		if (value == null) {
+			return defaultValue;
+		} else {
+			return value;
+		}
+
+	}
+
+	/**
+	 * 
+	 * class to handle the http requests
+	 * 
+	 * @author Clemens Quoss
+	 *
+	 */
 	private class HttpHandlerExample implements HttpHandler {
 
 		/**
