@@ -4,3 +4,8 @@ target/
 # JetBrains IntelliJ IdeaIU
 .idea
 *.iml
+
+# Eclipse
+.classpath
+.project
+.settings/
