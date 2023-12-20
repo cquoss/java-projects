@@ -9,3 +9,6 @@ target/
 .classpath
 .project
 .settings/
+
+# Microsoft Visual Studio Code
+.vscode/
