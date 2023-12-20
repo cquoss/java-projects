@@ -4,7 +4,7 @@
 
 This java project shows how to implement a cache functionality using plain java.
 
-## Table structure
+## Parameter table structure
 
 | Column | Type | Description |
 | ------ | ---- | ----------- |
@@ -23,6 +23,4 @@ Cache timeouts can be set on list as well as on single key level.
 
 ## Implementation details
 
-The cache values are read from the database using java futures with a configurable timeout (default: 20 milliseconds).
-
-The underlying database statement runs, where applicable, with a query timeout of 1 second.
+The cache values are read from the database using java futures with a configurable timeout (default: 100 milliseconds for type list and 20 milliseconds for single key).
