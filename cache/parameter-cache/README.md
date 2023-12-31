@@ -32,3 +32,4 @@ The cache values are read from the database using java futures with a configurab
 * For tests write a h2 database user defined sleep function.  
   Parameterize the sql statements in the cache code in order to be able to use this function in the where clause.
 * And of course: Write/complete unit tests.
+* Fix name bug: rename last accessed to last refreshed in cache entry and cache map class. 
